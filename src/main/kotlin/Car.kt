@@ -1,23 +1,11 @@
-import java.util.*
-
 class Car(
-    private val name: String,
+    private val name: CarName,
     private var position: Int = 0
 ) {
 
-    init {
-        validateCarName(name)
-    }
-
     constructor(car: Car) : this(car.name, car.position)
 
-    private fun validateCarName(name: String) {
-        if (Objects.isNull(name) || name.length > 5) {
-            throw IllegalArgumentException("자동차 이름은 최대 5자")
-        }
-    }
-
-    fun name(): String {
+    fun name(): CarName {
         return name;
     }
 

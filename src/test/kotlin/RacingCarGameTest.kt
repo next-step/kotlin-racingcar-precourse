@@ -10,7 +10,7 @@ class RacingCarGameTest {
     @Test
     @DisplayName("경주 게임은 자동차 N대를 가진다.")
     fun constructor1() {
-        val cars = setOf(Car("EV3"))
+        val cars = setOf(Car(CarName("EV3")))
         val racingCarGame = RacingCarGame(cars, 0, randomNumberPicker)
 
         assertThat(racingCarGame).isNotNull()
@@ -20,7 +20,7 @@ class RacingCarGameTest {
     @Test
     @DisplayName("경주 게임은 count가 0이되면 종료된다.")
     fun play1() {
-        val cars = setOf(Car("EV3"))
+        val cars = setOf(Car(CarName("EV3")))
         val racingCarGame = RacingCarGame(cars, 10, randomNumberPicker)
 
         racingCarGame.play()
@@ -30,7 +30,7 @@ class RacingCarGameTest {
     @Test
     @DisplayName("종료상태가 아닌 경우, 우승자를 반환할 수 없다.")
     fun winners1() {
-        val cars = setOf(Car("EV3"))
+        val cars = setOf(Car(CarName("EV3")))
         val racingCarGame = RacingCarGame(cars, 1, randomNumberPicker)
 
         val throwable = catchThrowable { racingCarGame.winners() }
@@ -42,13 +42,13 @@ class RacingCarGameTest {
     @Test
     @DisplayName("우승자는 포지션이 가장 큰 자동차들이다.")
     fun winners2() {
-        val winnerCar1 = Car("EV3", 10)
-        val winnerCar2 = Car("EV6", 10)
+        val winnerCar1 = Car(CarName("EV3"), 10)
+        val winnerCar2 = Car(CarName("EV3"), 10)
         val cars = setOf(
             winnerCar1,
             winnerCar2,
-            Car("K5", 5),
-            Car("K8", 9),
+            Car(CarName("EV3"), 5),
+            Car(CarName("EV3"), 9),
         )
         val racingCarGame = RacingCarGame(cars, 0, randomNumberPicker)
 
