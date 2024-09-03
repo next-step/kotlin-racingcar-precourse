@@ -1,13 +1,15 @@
 import java.util.*
 
-class Car(name: String, position: Int = 0) {
-
-    private var name = name
-    private var position = position
+class Car(
+    private val name: String,
+    private var position: Int = 0
+) {
 
     init {
         validateCarName(name)
     }
+
+    constructor(car: Car) : this(car.name, car.position)
 
     private fun validateCarName(name: String) {
         if (Objects.isNull(name) || name.length > 5) {
@@ -38,4 +40,21 @@ class Car(name: String, position: Int = 0) {
         return randomNumber in 0..4;
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Car
+
+        if (name != other.name) return false
+        if (position != other.position) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + position
+        return result
+    }
 }
