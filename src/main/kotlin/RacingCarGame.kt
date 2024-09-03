@@ -16,8 +16,12 @@ class RacingCarGame constructor(
             .collect(Collectors.toSet())
     }
 
+    fun isFinished(): Boolean {
+        return playCount <= 0
+    }
+
     fun play() {
-        if (playCount <= 0) {
+        if (isFinished()) {
             throw IllegalStateException("경주 게임이 종료되었습니다.");
         }
 

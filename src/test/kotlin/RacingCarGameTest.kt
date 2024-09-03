@@ -87,4 +87,15 @@ class RacingCarGameTest {
 
         assertThat(racingCarGame.winners()).containsAll(setOf(winnerCar1, winnerCar2))
     }
+
+    @Test
+    @DisplayName("종료상태인지 확인할 수 있다.")
+    fun isFinished1() {
+        val finishedGame = RacingCarGame(setOf(), 0, randomNumberPicker)
+        val noneFinishedGame = RacingCarGame(setOf(), 1, randomNumberPicker)
+
+        assertThat(finishedGame.isFinished()).isTrue()
+        assertThat(noneFinishedGame.isFinished()).isFalse()
+
+    }
 }
