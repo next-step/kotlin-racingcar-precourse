@@ -1,6 +1,6 @@
 import java.util.*
 
-class Car constructor(name: String, position: Int = 0) {
+class Car(name: String, position: Int = 0) {
 
     private var name = name
     private var position = position
@@ -29,12 +29,13 @@ class Car constructor(name: String, position: Int = 0) {
 
     fun moveForwardByCondition(randomNumberPicker: RandomNumberPicker) {
         val randomNumber = randomNumberPicker.pick();
-        if (randomNumber < 0 || randomNumber > 4) {
-            return
+        if (isMovableCondition(randomNumber)) {
+            moveForward()
         }
-
-         moveForward()
     }
 
+    private fun isMovableCondition(randomNumber: Int): Boolean {
+        return randomNumber in 0..4;
+    }
 
 }
