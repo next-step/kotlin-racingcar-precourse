@@ -10,11 +10,19 @@ class RacingCarGame constructor(
         .map(::Car)
         .collect(Collectors.toSet())
 
+    fun cars():Set<Car> {
+        return cars.stream()
+            .map(::Car)
+            .collect(Collectors.toSet())
+    }
+
     fun play() {
-        while (playCount > 0) {
-            cars.forEach { car -> car.moveForwardByCondition(randomNumberPicker) }
-            playCount--;
+        if (playCount <= 0) {
+            throw IllegalStateException("경주 게임이 종료되었습니다.");
         }
+
+        cars.forEach { car -> car.moveForwardByCondition(randomNumberPicker) }
+        playCount--
     }
 
     fun winners(): Set<Car> {

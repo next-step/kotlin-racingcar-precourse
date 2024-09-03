@@ -18,13 +18,46 @@ class RacingCarGameTest {
     }
 
     @Test
-    @DisplayName("경주 게임은 count가 0이되면 종료된다.")
+    @DisplayName("경주 게임은 play 하면 playCount 1을 소모한다.")
     fun play1() {
         val cars = setOf(Car(CarName("EV3")))
-        val racingCarGame = RacingCarGame(cars, 10, randomNumberPicker)
+        val racingCarGame = RacingCarGame(cars, 5, randomNumberPicker)
 
         racingCarGame.play()
-        assertThat(racingCarGame).hasFieldOrPropertyWithValue("playCount", 0)
+
+        assertThat(racingCarGame).hasFieldOrPropertyWithValue("playCount", 4)
+    }
+
+    @Test
+    @DisplayName("경주 게임은 play 하면 모든 자동차가 게임을 진행한다.")
+    fun play2() {
+        val cars = setOf(
+            Car(CarName("EV3"), 0),
+            Car(CarName("EV6"), 0)
+        )
+        val movableNumberPicker = object : RandomNumberPicker {
+            override fun pick(): Int {
+                return 4;
+            }
+        }
+        val racingCarGame = RacingCarGame(cars, 5, movableNumberPicker)
+        racingCarGame.play()
+
+        assertThat(racingCarGame.cars()).contains(
+            Car(CarName("EV3"), 1),
+            Car(CarName("EV6"), 1),
+        )
+    }
+
+    @Test
+    @DisplayName("경주 게임은 playCount가 0인경우 종료상태로 게임을 진행할 수 없다.")
+    fun play3() {
+        val cars = setOf(Car(CarName("EV3")))
+        val racingCarGame = RacingCarGame(cars, 0, randomNumberPicker)
+
+        val throwable = catchThrowable { racingCarGame.play() }
+        assertThat(throwable).isInstanceOf(IllegalStateException::class.java)
+            .hasMessage("경주 게임이 종료되었습니다.")
     }
 
     @Test
