@@ -36,12 +36,12 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("0 ~ 9 사이 무작위 값이 4이하라면, 전진한다.")
+    @DisplayName("랜덤으로 뽑은 값이 4이하라면, 전진한다.")
     fun moveForwardByCondition1() {
         val defaultPosition = 0
         val ev3 = Car(name = "EV3", position = defaultPosition)
         val movableNumberPicker = object : RandomNumberPicker {
-            override fun pick(start: Int, end: Int): Int {
+            override fun pick(): Int {
                 return 4;
             }
         }
@@ -52,12 +52,12 @@ class CarTest {
     }
 
     @Test
-    @DisplayName("0 ~ 9 사이 무작위 값이 4초과라면, 움직이지 않는다.")
+    @DisplayName("랜덤으로 뽑은 값이 4초과라면, 움직이지 않는다.")
     fun moveForwardByCondition2() {
         val defaultPosition = 0
         val ev3 = Car(name = "EV3", position = defaultPosition)
         val immovableNumberPicker = object : RandomNumberPicker {
-            override fun pick(start: Int, end: Int): Int {
+            override fun pick(): Int {
                 return 5;
             }
         }

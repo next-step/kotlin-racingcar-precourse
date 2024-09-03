@@ -28,7 +28,7 @@ class Car constructor(name: String, position: Int = 0) {
     }
 
     fun moveForwardByCondition(randomNumberPicker: RandomNumberPicker) {
-        val randomNumber = randomNumberPicker.pick(0, 9);
+        val randomNumber = randomNumberPicker.pick();
         if (randomNumber < 0 || randomNumber > 4) {
             return
         }
