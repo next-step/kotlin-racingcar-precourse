@@ -10,4 +10,8 @@ class RacingCarView {
         println("시도할 회수는 몇회인가요?")
         return readln().toInt()
     }
+
+    fun printError(message: String?) {
+        println("[ERROR] ${message?: "다시 입력하세요."}")
+    }
 }

@@ -6,12 +6,23 @@ import com.hyundai.racingcar.view.RacingCarView
 class RacingCarContoller(private val view: RacingCarView) {
 
     fun enterNames(): List<Car> {
-        val names = view.getNames()
-        return names.split(',').map(String::trim).map { Car(it) }.toList()
+        while(true) {
+            try {
+                val names = view.getNames()
+                return names.split(',').map(String::trim).map { Car(it) }.toList()
+            } catch (e: IllegalArgumentException) {
+                view.printError(e.message)
+            }
+        }
     }
 
     fun enterTrials(): Int {
-        return view.getTrials()
+        while(true) {
+            try {
+                return view.getTrials()
+            } catch (e: NumberFormatException) {
+                view.printError("숫자를 입력하세요.")
+            }
+        }
     }
-
 }
