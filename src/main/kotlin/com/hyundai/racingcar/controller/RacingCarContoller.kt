@@ -6,8 +6,12 @@ import com.hyundai.racingcar.view.RacingCarView
 class RacingCarContoller(private val view: RacingCarView) {
 
     fun enterNames(): List<Car> {
-        val names = view.enterNames()
+        val names = view.getNames()
         return names.split(',').map(String::trim).map { Car(it) }.toList()
+    }
+
+    fun enterTrials(): Int {
+        return view.getTrials()
     }
 
 }

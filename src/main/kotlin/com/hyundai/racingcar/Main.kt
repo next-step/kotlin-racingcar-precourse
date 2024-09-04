@@ -8,4 +8,5 @@ fun main() {
     val controller = RacingCarContoller(view)
 
     val cars = controller.enterNames()
+    val trials = controller.enterTrials()
 }
