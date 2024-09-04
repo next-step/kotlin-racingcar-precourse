@@ -6,7 +6,7 @@ class RacingCarView {
         return readln()
     }
 
-    fun getTrials(): Int {
+    fun getCounts(): Int {
         println("시도할 회수는 몇회인가요?")
         return readln().toInt()
     }
