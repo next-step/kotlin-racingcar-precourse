@@ -1,5 +1,9 @@
 # kotlin-racingcar-precourse
 
+## To-do list
+
+[Link](./docs/TODO.md)
+
 ## 기능 요구 사항
 
 초간단 자동차 경주 게임을 구현한다.
