@@ -5,14 +5,13 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
-import java.util.*
 
 class CarTest {
 
     @Test
     fun car_exception() {
         assertThatIllegalArgumentException()
-            .isThrownBy { Car(-1) }
+            .isThrownBy { Car(position = -1) }
             .withMessage("자동차 위치는 음수일 수 없습니다.")
     }
 

@@ -1,7 +1,9 @@
 package domain
 
+import java.time.Instant
+
 class CarName (
-   private val name: String
+   private val name: String = "${Instant.now().toEpochMilli()}"
 ){
    init {
       when {

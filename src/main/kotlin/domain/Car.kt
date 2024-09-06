@@ -3,6 +3,7 @@ package domain
 import java.util.Random
 
 class Car(
+    private val carName: CarName = CarName(),
     private var position: Int = 0
 ) {
     companion object {
@@ -12,6 +13,7 @@ class Car(
     }
 
     val wherePosition: Int get() = position
+    val nameForPrint: String get() = carName.nameForPrint
 
     init {
         when{
