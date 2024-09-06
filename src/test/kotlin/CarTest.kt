@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import java.util.*
 
 class CarTest {
 
@@ -20,7 +21,7 @@ class CarTest {
     @DisplayName("4 이상인 경우 전진한다.")
     fun accelerate1(value: Int) {
         val car = Car()
-        car.accelerate(value)
+        car.accelerate(FixRandom(value))
         assertThat(car.wherePosition).isEqualTo(1)
     }
 
@@ -29,7 +30,7 @@ class CarTest {
     @DisplayName("3 이하인 경우 그대로다.")
     fun accelerate2(value: Int) {
         val car = Car()
-        car.accelerate(value)
+        car.accelerate(FixRandom(value))
         assertThat(car.wherePosition).isEqualTo(0)
     }
 }

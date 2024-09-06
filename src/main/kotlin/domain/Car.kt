@@ -1,8 +1,16 @@
 package domain
 
+import java.util.Random
+
 class Car(
     private var position: Int = 0
 ) {
+    companion object {
+        const val MAX_RANDOM_BOUND = 10
+        const val THRESHOLD_TO_MOVE = 4
+        const val MOVE_DISTANCE = 1
+    }
+
     val wherePosition: Int get() = position
 
     init {
@@ -11,9 +19,9 @@ class Car(
         }
     }
 
-    fun accelerate(value: Int) {
-        if (value >= 4) {
-            this.position += 1
+    fun accelerate(random: Random) {
+        if (random.nextInt(MAX_RANDOM_BOUND) >= THRESHOLD_TO_MOVE) {
+            this.position += MOVE_DISTANCE
         }
     }
 }

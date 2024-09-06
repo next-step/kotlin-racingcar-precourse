@@ -23,10 +23,10 @@
 
 ## Domain
 
-- [ ] 예외는 IllegalArgumentException, IllegalStateException 등으로 처리한다.
+- [X] 예외는 IllegalArgumentException, IllegalStateException 등으로 처리한다.
 - [X] 각 자동차에 이름을 부여할 수 있다.
 - [X] 각 자동차에 이름은 빈값일 수 없다.
-- [ ] 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
+- [X] 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
   - [X] 4 이상인 경우 전진한다.
   - [X] 3 이하인 경우 그대로다.
 - [X] 자동차 위치는 음수일 수 없습니다.
