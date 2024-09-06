@@ -29,4 +29,17 @@ class Car(
             this.position += MOVE_DISTANCE
         }
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Car) return false
+
+        if (carName != other.carName) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return carName.hashCode()
+    }
 }
