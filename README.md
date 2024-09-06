@@ -1,1 +1,3 @@
 # kotlin-racingcar-precourse
+
+test
