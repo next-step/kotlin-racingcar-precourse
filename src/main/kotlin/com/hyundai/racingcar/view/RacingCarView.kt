@@ -25,4 +25,10 @@ class RacingCarView {
         cars.forEach { println("${it.name} : ${"-".repeat(it.position)}")}
         println()
     }
+
+    fun printWinners(winners: List<Car>) {
+        val winnerNames = winners.map { it.name }
+            .joinToString(", ")
+        println("최종 우승자 : $winnerNames")
+    }
 }

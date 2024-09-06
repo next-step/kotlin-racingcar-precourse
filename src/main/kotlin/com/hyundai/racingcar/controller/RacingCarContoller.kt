@@ -2,6 +2,7 @@ package com.hyundai.racingcar.controller
 
 import com.hyundai.racingcar.model.Car
 import com.hyundai.racingcar.model.rule.MoveRule
+import com.hyundai.racingcar.model.rule.WinnerRule
 import com.hyundai.racingcar.model.vo.Trials
 import com.hyundai.racingcar.view.RacingCarView
 
@@ -36,5 +37,10 @@ class RacingCarContoller(private val view: RacingCarView) {
             cars.forEach { it.move(moveRule) }
             view.printResult(cars)
         }
+    }
+
+    fun showWinners(cars: List<Car>, winnerRule: WinnerRule) {
+        val winners = winnerRule.chooseWinners(cars)
+        view.printWinners(winners)
     }
 }
