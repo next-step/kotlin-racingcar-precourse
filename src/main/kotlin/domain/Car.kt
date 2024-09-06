@@ -12,14 +12,17 @@ class Car(
         const val MOVE_DISTANCE = 1
     }
 
-    val wherePosition: Int get() = position
-    val nameForPrint: String get() = carName.nameForPrint
-
     init {
         when{
             position < 0 -> throw IllegalArgumentException("자동차 위치는 음수일 수 없습니다.")
         }
     }
+
+    constructor(carName: String, position: Int) : this(CarName(carName), position)
+    constructor(carName: String) : this(CarName(carName))
+
+    val wherePosition: Int get() = position
+    val nameForPrint: String get() = carName.nameForPrint
 
     fun accelerate(random: Random) {
         if (random.nextInt(MAX_RANDOM_BOUND) >= THRESHOLD_TO_MOVE) {
