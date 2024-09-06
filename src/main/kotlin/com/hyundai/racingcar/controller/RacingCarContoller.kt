@@ -9,7 +9,7 @@ import com.hyundai.racingcar.view.RacingCarView
 class RacingCarContoller(private val view: RacingCarView) {
 
     fun enterNames(): List<Car> {
-        while(true) {
+        while (true) {
             try {
                 val names = view.getNames()
                 return names.split(',').map(String::trim).map { Car(it) }.toList()
@@ -22,7 +22,7 @@ class RacingCarContoller(private val view: RacingCarView) {
     }
 
     fun enterTrials(): Trials {
-        while(true) {
+        while (true) {
             try {
                 return Trials(view.getCounts())
             } catch (e: NumberFormatException) {

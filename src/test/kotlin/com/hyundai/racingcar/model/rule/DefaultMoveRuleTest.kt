@@ -33,7 +33,7 @@ class DefaultMoveRuleTest {
     companion object {
 
         @JvmStatic
-        fun randomIntAndMovabilityProvider():Stream<Arguments> {
+        fun randomIntAndMovabilityProvider(): Stream<Arguments> {
             return Stream.of(
                 Arguments.of(0, false),
                 Arguments.of(1, false),
