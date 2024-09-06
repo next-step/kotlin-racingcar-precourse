@@ -1,4 +1,4 @@
-package com.hyundai.racingcar.model
+package com.hyundai.racingcar.model.vo
 
 data class Trials(val count: Int) {
     init {

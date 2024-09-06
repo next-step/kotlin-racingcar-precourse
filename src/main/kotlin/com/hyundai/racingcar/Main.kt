@@ -1,6 +1,7 @@
 package com.hyundai.racingcar
 
 import com.hyundai.racingcar.controller.RacingCarContoller
+import com.hyundai.racingcar.model.rule.DefaultMoveRule
 import com.hyundai.racingcar.view.RacingCarView
 
 fun main() {
@@ -8,5 +9,9 @@ fun main() {
     val controller = RacingCarContoller(view)
 
     val cars = controller.enterNames()
+
     val trials = controller.enterTrials()
+
+    val moveRule = DefaultMoveRule()
+    controller.moveCars(trials, cars, moveRule)
 }
