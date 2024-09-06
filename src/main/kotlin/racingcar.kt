@@ -1,40 +1,33 @@
 package com.example.randombox
 
 import java.io.BufferedReader
+import java.io.InputStreamReader
 
 fun main() {
     var carList = ArrayList<RacingCar>()
-    var winners = ArrayList<RacingCar>()
     var numOfTry = 0
 
     loop1@while(true) {
         println("Input racingcar's name. (name can be devided by qutation(,)")
-        val names = inputNames().split(',')
-        for (n in names) {
-            if (n.length > 4) {
-                println("[ERROR] Invalid name, Please input again.")
-                carList.clear()
-                continue@loop1
-            } else {
-                val car = RacingCar(n.trim())
-                carList.add(car)
-            }
+        try {
+            inputNames(carList)
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] Invalid name, Please input again.")
+            continue@loop1
         }
         break
     }
 
     loop2@while(true) {
         println("How many times will you try? ")
-        numOfTry = inputTryNum()
-
-        if(numOfTry > 0) {
-            break;
-        } else {
-            println("[ERROR] Invalid number.")
+        try {
+            numOfTry = inputTryNum()
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] Invalid Number, Please input again.")
             continue@loop2
         }
+        break
     }
-
 
     println("The results of racing")
     while (numOfTry > 0) {
@@ -64,23 +57,34 @@ fun main() {
     println("Final winner : " + namesOfWinner)
 }
 
-fun inputNames() : String {
-    val names = readLine()!!.trim().toString()
-    return names
-}
+fun inputNames(list: ArrayList<RacingCar>) {
+    val names = readLine()!!.trim().toString().split(',')
 
-fun inputTryNum() : Int {
-    var tryNum = 0
-    try {
-        tryNum = readLine()!!.trim().toInt()
-    } catch ( e: NumberFormatException) {
-        return -1
+    for (n in names) {
+        if (n.length > 4) {
+            throw IllegalArgumentException("e: IllegalArgumentException")
+            list.clear()
+        } else {
+            val car = RacingCar(n.trim())
+            list.add(car)
+        }
     }
-
-    return tryNum
 }
 
-class RacingCar (name : String ){
+fun isNumber(s: String?): Boolean {
+    return if (s.isNullOrEmpty()) false else s.all { Character.isDigit(it) }
+}
+
+fun inputTryNum(): Int {
+    val tryNum = readLine()!!.trim()
+    if(!isNumber(tryNum)) {
+        throw IllegalArgumentException("e: IllegalArgumentException")
+    } else {
+        return tryNum.toInt()
+    }
+}
+
+class RacingCar(name: String) {
     var name = name
     var progress = this.name + " : "
     var advancedNumber = 0
@@ -94,12 +98,12 @@ class RacingCar (name : String ){
         }
     }
 
-    fun rand() : Int {
+    fun rand(): Int {
         val numberRange = (0..9)
         return numberRange.random()
     }
 
-    override fun toString() : String {
+    override fun toString(): String {
         return "$advancedNumber, " + progress
     }
 }
