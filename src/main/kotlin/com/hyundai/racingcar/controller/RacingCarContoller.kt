@@ -31,8 +31,10 @@ class RacingCarContoller(private val view: RacingCarView) {
     }
 
     fun moveCars(trials: Trials, cars: List<Car>, moveRule: MoveRule) {
+        view.printResultMessage()
         for (i in 1..trials.count) {
             cars.forEach { it.move(moveRule) }
+            view.printResult(cars)
         }
     }
 }
