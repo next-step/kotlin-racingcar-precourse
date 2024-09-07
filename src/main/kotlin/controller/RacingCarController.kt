@@ -9,12 +9,12 @@ class RacingCarController(
     private val view: RacingCarView,
 ) {
     private fun checkCarName(name: String): List<String>? {
-        val carName = name.split(',').map { it.trim() }
+        val names = name.split(',').map { it.trim() }
 
-        if (carName.any { it.isBlank() || it.length > 5}) {
-            return null
+        val carNames = names.takeIf { carName ->
+            carName.all { it.isNotBlank() && it.length <= 5 }
         }
-        return carName
+        return carNames
     }
 
     private fun getCarName(): List<String> {
@@ -35,8 +35,8 @@ class RacingCarController(
     }
 
     private fun checkRacingCount(count: String): Int? {
-        val racingCount = count.toIntOrNull()?.takeIf { it > 0 }
-        return racingCount
+        val racingCounts = count.toInt().takeIf { it > 0 }
+        return racingCounts
     }
 
     private fun getRacingCount(): Int {
@@ -75,6 +75,13 @@ class RacingCarController(
         view.printEmptyLine()
     }
 
+    private fun findGameWinner() {
+        val maxValue = models.maxOfOrNull { it.race }
+        val winners = models.filter { it.race == maxValue }.joinToString(", ") { it.car }
+
+        view.printGameWinner(winners)
+    }
+
     fun playRacingCarGame() {
         val cars = getCarName()
         val counts = getRacingCount()
@@ -83,5 +90,7 @@ class RacingCarController(
         repeat(counts) {
             updateRacingCar()
         }
+
+        findGameWinner()
     }
 }

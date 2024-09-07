@@ -29,4 +29,8 @@ class RacingCarView {
         val track = "-".repeat(race)
         println("$name : $track")
     }
+
+    fun printGameWinner(winner: String) {
+        println("최종 우승자 : $winner")
+    }
 }
