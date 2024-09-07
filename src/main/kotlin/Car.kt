@@ -1,6 +1,6 @@
 data class Car (
     val name: String,
-    var mileage: Long
+    var mileage: Int
 ) {
     init {
         require(name.length <= 5) {
@@ -8,7 +8,13 @@ data class Car (
         }
     }
 
-    fun drive(mileage: Long) {
+    companion object {
+        fun createCars(carNames: List<String>): List<Car> {
+            return carNames.map { Car(it, 0) }
+        }
+    }
+
+    fun drive(mileage: Int) {
         this.mileage += mileage
     }
 }
