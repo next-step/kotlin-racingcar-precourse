@@ -1,12 +1,13 @@
 package controller
 
 import model.RacingCarModel
+import service.RacingCarService
 import view.RacingCarView
-import kotlin.random.Random
 
 class RacingCarController(
     private val models: MutableList<RacingCarModel>,
     private val view: RacingCarView,
+    private val service: RacingCarService = RacingCarService(models, view),
 ) {
     private fun checkCarName(name: String): List<String>? {
         val names = name.split(',').map { it.trim() }
@@ -56,41 +57,15 @@ class RacingCarController(
         }
     }
 
-    private fun createRacingCar(cars: List<String>) {
-        view.printEmptyLine()
-        view.printGameResult()
-
-        models.addAll(cars.map { RacingCarModel(it,0) })
-    }
-
-    private fun updateRacingCar() {
-        models.forEach { model ->
-            val randomValue = Random.nextInt(10)
-            if (randomValue >= 4) {
-                model.race += 1
-            }
-
-            view.printRacingCar(model.car, model.race)
-        }
-        view.printEmptyLine()
-    }
-
-    private fun findGameWinner() {
-        val maxValue = models.maxOfOrNull { it.race }
-        val winners = models.filter { it.race == maxValue }.joinToString(", ") { it.car }
-
-        view.printGameWinner(winners)
-    }
-
     fun playRacingCarGame() {
         val cars = getCarName()
         val counts = getRacingCount()
 
-        createRacingCar(cars)
+        service.createRacingCar(cars)
         repeat(counts) {
-            updateRacingCar()
+            service.updateRacingCar()
         }
 
-        findGameWinner()
+        service.findRacingCarWinner()
     }
 }
