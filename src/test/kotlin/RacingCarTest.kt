@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import view.RacingCarView
 
-class RacingCarControllerTest {
+class RacingCarTest {
     private lateinit var racingCarRepository: RacingCarRepository
     private lateinit var racingCarView: RacingCarView
     private lateinit var racingController: RacingController
@@ -34,13 +34,13 @@ class RacingCarControllerTest {
     }
 
     @Test
-    fun `Add Racing Car List`() {
+    fun `Validation for Car List`() {
         assertThat(racingCarRepository.getAllRacingCar()).isNotNull()
         assertThat(racingCarRepository.getAllRacingCar()[0].name).isEqualTo("kwak")
     }
 
     @Test
-    fun `Set a racing Count`() {
+    fun `Check a racing Count`() {
         val racingCount = racingCarRepository.getRacingCount()
         assertThat(racingCount).isNotNull()
         assertThat(racingCount).isEqualTo(1)
