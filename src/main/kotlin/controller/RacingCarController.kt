@@ -1,9 +1,12 @@
 package controller
 
+import model.RacingCarModel
 import view.RacingCarView
+import kotlin.random.Random
 
 class RacingCarController(
-    private val view: RacingCarView
+    private val models: MutableList<RacingCarModel>,
+    private val view: RacingCarView,
 ) {
     private fun checkCarName(name: String): List<String>? {
         val carName = name.split(',').map { it.trim() }
@@ -26,7 +29,7 @@ class RacingCarController(
                     ?: throw IllegalArgumentException("경주할 자동차 이름은 1자 이상 5자 이하만 가능합니다.")
                 return carName
             } catch (e: IllegalArgumentException) {
-                view.printErrorMessage(e.message.toString())
+                view.printErrorMessage(e.message)
             }
         }
     }
@@ -53,8 +56,32 @@ class RacingCarController(
         }
     }
 
+    private fun createRacingCar(cars: List<String>) {
+        view.printEmptyLine()
+        view.printGameResult()
+
+        models.addAll(cars.map { RacingCarModel(it,0) })
+    }
+
+    private fun updateRacingCar() {
+        models.forEach { model ->
+            val randomValue = Random.nextInt(10)
+            if (randomValue >= 4) {
+                model.race += 1
+            }
+
+            view.printRacingCar(model.car, model.race)
+        }
+        view.printEmptyLine()
+    }
+
     fun playRacingCarGame() {
         val cars = getCarName()
         val counts = getRacingCount()
+
+        createRacingCar(cars)
+        repeat(counts) {
+            updateRacingCar()
+        }
     }
 }

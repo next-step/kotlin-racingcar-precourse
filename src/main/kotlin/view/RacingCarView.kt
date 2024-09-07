@@ -16,4 +16,17 @@ class RacingCarView {
     fun printErrorMessage(message: String?) {
         println("[ERROR] $message")
     }
+
+    fun printEmptyLine() {
+        println()
+    }
+
+    fun printGameResult() {
+        println("실행 결과")
+    }
+
+    fun printRacingCar(name: String, race: Int) {
+        val track = "-".repeat(race)
+        println("$name : $track")
+    }
 }
