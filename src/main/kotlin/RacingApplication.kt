@@ -5,13 +5,7 @@ import view.View
 
 val racingCarController = RacingController()
 fun main() {
-    // 차량 input 받음
-    val registerCarView = RegisterCarView()
-    registerCarView.printCarNameInputMessage()
-    val carNames = registerCarView.scanCarNames()
-
-    // controller 차량 등록 호출
-    val cars = registerCars(carNames, registerCarView)
+    val cars = registerCars()
 
     // 몇회 전진 입력 받음
     // controller 전진 호출
@@ -20,12 +14,18 @@ fun main() {
     // 우승자 출력
 }
 
-private fun registerCars(carNames: String, view: View): List<Car> {
+private fun registerCars(): List<Car> {
+    val registerCarView = RegisterCarView()
     while (true) {
         try {
+            // 차량 input 받음
+            registerCarView.printCarNameInputMessage()
+            val carNames = registerCarView.scanCarNames()
+
+            // controller 차량 등록 호출
             return racingCarController.registerCars(carNames)
         } catch (exception: IllegalArgumentException) {
-            view.printErrorMessage(exception)
+            registerCarView.printErrorMessage(exception)
         }
     }
 }
