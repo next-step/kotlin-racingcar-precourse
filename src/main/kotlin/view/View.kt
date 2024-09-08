@@ -6,5 +6,5 @@ interface View {
     companion object {
         const val ERROR_PREFIX = "[ERROR]"
     }
-    fun printErrorMessage(exception: RuntimeException) = "$ERROR_PREFIX ${exception.message}"
+    fun printErrorMessage(exception: RuntimeException) = println("$ERROR_PREFIX ${exception.message}")
 }
