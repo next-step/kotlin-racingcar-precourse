@@ -12,4 +12,11 @@ fun main(args: Array<String>) {
         consoleView.inputRacingCarNameGuide()
         racingCars = consoleView.inputRacingCar()
     }
+
+    consoleView.inputMoveTimeGuide()
+    var moveTime = consoleView.inputMoveTime()
+    while (moveTime == null) {
+        consoleView.inputMoveTimeGuide()
+        moveTime = consoleView.inputMoveTime()
+    }
 }

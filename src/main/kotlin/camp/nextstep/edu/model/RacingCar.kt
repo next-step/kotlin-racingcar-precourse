@@ -1,7 +1,8 @@
 package camp.nextstep.edu.model
 
 class RacingCar(
-    name: String
+    name: String,
+    moveSize: Int = 0,
 ) {
     init {
         if (name.length > 5) {
