@@ -1,4 +1,4 @@
 package view
 
-class RacingView {
+class RacingView : View {
 }

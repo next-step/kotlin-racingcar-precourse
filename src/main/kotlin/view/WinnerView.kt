@@ -1,4 +1,4 @@
 package view
 
-class WinnerView {
+class WinnerView : View  {
 }
