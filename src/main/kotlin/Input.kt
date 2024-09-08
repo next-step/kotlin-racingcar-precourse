@@ -1,3 +1,5 @@
+import java.util.Objects
+
 class Input private constructor() {
 
     companion object {
@@ -19,12 +21,19 @@ class Input private constructor() {
         }
 
         private fun <T> readInputWithRetry(action: () -> T): T {
-            return try {
-                action()
-            } catch (e: IllegalArgumentException) {
-                println("[ERROR] ".plus(e.message + "\n"))
-                readInputWithRetry(action)
+            var data: T? = null
+            var done = false
+
+            while (!done) {
+                try {
+                    data = action()
+                    done = true
+                } catch (e: IllegalArgumentException) {
+                    println("[ERROR] ${e.message}\n")
+                }
             }
+
+            return data!!
         }
     }
 }
