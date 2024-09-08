@@ -1,6 +1,7 @@
 import controller.RacingController
 import model.Car
 import view.RacingView
+import view.RoundView
 import view.RegisterCarView
 
 val racingCarController = RacingController()
@@ -8,7 +9,7 @@ fun main() {
     val cars = registerCars()
 
     // 몇회 전진 입력 받음
-    val round = scanRound()
+    val rounds = scanRounds()
 
     // controller 전진 호출
     // 차량 전진 출력
@@ -32,14 +33,14 @@ private fun registerCars(): List<Car> {
     }
 }
 
-private fun scanRound(): Int {
-    val racingView = RacingView()
+private fun scanRounds(): Int {
+    val roundView = RoundView()
     while (true) {
         try {
-            racingView.printRoundInputMessage()
-            return racingView.scanRound()
+            roundView.printRoundInputMessage()
+            return roundView.scanRound()
         } catch (exception: NumberFormatException) {
-            racingView.printErrorMessage(exception)
+            roundView.printErrorMessage(exception)
         }
     }
 }
