@@ -21,6 +21,8 @@ fun main(args: Array<String>) {
 
     consoleView.resultTitle()
     for (i in 1..moveTime) {
-        consoleView.printResult(racingCars)
+        racingCars = consoleView.printMoveResult(racingCars)
     }
+
+    consoleView.printWinner(racingCars)
 }

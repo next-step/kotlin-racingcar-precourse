@@ -35,4 +35,15 @@ class RacingCarTest {
 
         assert(car.moveSize in expectedMoveSize)
     }
+
+    @Test
+    fun isWinnerTest() {
+        val winner = RacingCar("abc", 3)
+        val justCar = RacingCar("qwe", 1)
+
+        val maxMoveSize = 3
+
+        assert(winner.isWinner(maxMoveSize))
+        assert(!justCar.isWinner(maxMoveSize))
+    }
 }

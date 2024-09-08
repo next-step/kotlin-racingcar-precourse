@@ -35,13 +35,21 @@ class ConsoleView(
     }
 
     fun resultTitle() = println("실행 결과")
-    fun printResult(cars: List<RacingCar>): List<RacingCar> {
+    fun printMoveResult(cars: List<RacingCar>): List<RacingCar> {
         val newCars = gameController.moveCars(cars)
         newCars.forEach {
             println(it.printFormat())
         }
         println()
         return newCars
+    }
+
+    fun printWinner(cars: List<RacingCar>) {
+        var printString = "최종 우승자 : "
+        val winners = gameController.getWinners(cars)
+        winners.forEach { printString = printString.plus("${it.name}, ") }
+        printString = printString.removeSuffix(", ")
+        println(printString)
     }
 
     private fun checkNumberOverZero(number: Int) {

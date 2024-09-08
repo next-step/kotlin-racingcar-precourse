@@ -25,4 +25,6 @@ class RacingCar(
         val randomNumber = random.nextInt(10)
         if (randomNumber >= 4) {moveSize++}
     }
+
+    fun isWinner(maxMoveSize: Int): Boolean = maxMoveSize == moveSize
 }
