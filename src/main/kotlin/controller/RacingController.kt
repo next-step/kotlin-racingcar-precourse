@@ -25,7 +25,8 @@ class RacingController {
         return cars
     }
 
-    fun calculateWinner() {
-        TODO()
+    fun calculateWinner(cars: List<Car>): List<Car> {
+        val maxDistance = cars.maxOf { it.distance }
+        return cars.filter { it.distance == maxDistance }
     }
 }
