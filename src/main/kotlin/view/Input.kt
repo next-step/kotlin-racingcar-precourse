@@ -1,3 +1,7 @@
+package view
+
+import model.CarName
+
 class Input private constructor() {
 
     companion object {

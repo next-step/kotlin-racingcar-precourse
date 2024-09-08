@@ -1,3 +1,7 @@
+package view
+
+import model.Car
+
 class Output private constructor() {
 
     companion object {

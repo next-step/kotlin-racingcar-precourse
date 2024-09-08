@@ -1,3 +1,5 @@
+package model
+
 class Car(
     private val name: CarName,
     private var position: Int = 0

@@ -1,3 +1,9 @@
+import model.Car
+import model.RacingCarGame
+import model.RangeRandomNumberPicker
+import view.Input
+import view.Output
+
 fun main(args: Array<String>) {
     val cars = Input.readCarNames()
         .map(::Car)

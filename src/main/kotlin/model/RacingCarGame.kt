@@ -1,3 +1,5 @@
+package model
+
 import java.util.stream.Collectors
 
 class RacingCarGame constructor(

@@ -1,3 +1,5 @@
+package model
+
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.catchThrowable
 import org.junit.jupiter.api.DisplayName
