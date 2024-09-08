@@ -30,7 +30,18 @@ class ConsoleView(
             println("[ERROR] input must be over 0")
             return null
         }
+        println()
         return input
+    }
+
+    fun resultTitle() = println("실행 결과")
+    fun printResult(cars: List<RacingCar>): List<RacingCar> {
+        val newCars = gameController.moveCars(cars)
+        newCars.forEach {
+            println(it.printFormat())
+        }
+        println()
+        return newCars
     }
 
     private fun checkNumberOverZero(number: Int) {

@@ -7,16 +7,32 @@ class RacingCarTest {
 
     @Test
     fun initializeRacingCar() {
-        // given
         val rightName = "abc"
         val wrongName = "anyone"
 
-        // when
         val expectedResult = RacingCar("abc")
-        val rightResult = RacingCar(rightName)
+        val car = RacingCar(rightName)
 
-        // then
-        assert(rightResult != expectedResult)
+        assert(car.name == expectedResult.name && car.moveSize == expectedResult.moveSize)
         assertThrows<IllegalArgumentException> { RacingCar(wrongName) }
+    }
+
+    @Test
+    fun printFormatTest() {
+        val car = RacingCar("abc", 3)
+
+        val expectedResult = "abc : ---"
+
+        assert(car.printFormat() == expectedResult)
+    }
+
+    @Test
+    fun addMoveSizeTest() {
+        val car = RacingCar("abc", 3)
+
+        val expectedMoveSize = 3..4
+        car.addMoveSize()
+
+        assert(car.moveSize in expectedMoveSize)
     }
 }
