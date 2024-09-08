@@ -1,8 +1,8 @@
 package controller
 
+import CarValidator
 import model.Car
-import view.RacingView
-import view.WinnerView
+import randomInt
 
 class RacingController {
 
@@ -18,11 +18,14 @@ class RacingController {
         return carNames.map { Car(it) }
     }
 
-    fun racing(): RacingView {
-        TODO()
+    fun racing(cars: List<Car>): List<Car> {
+        cars.forEach { car ->
+            car.move(randomInt(0, 9))
+        }
+        return cars
     }
 
-    fun calculateWinner(): WinnerView {
+    fun calculateWinner() {
         TODO()
     }
 }
