@@ -1,5 +1,3 @@
-import java.util.Objects
-
 class Input private constructor() {
 
     companion object {
