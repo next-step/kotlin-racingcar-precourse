@@ -1,7 +1,10 @@
-
+import view.RegisterCarView
 
 fun main() {
     // 차량 input 받음
+    val registerCarView = RegisterCarView()
+    registerCarView.printCarNameInputMessage()
+    val carNames = registerCarView.scanCarNames()
     // controller 차량 등록 호출
     // 몇회 전진 입력 받음
     // controller 전진 호출
