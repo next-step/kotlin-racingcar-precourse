@@ -1,4 +1,6 @@
 package model
 
-class Car {
-}
+class Car(
+    val name: String,
+    val distance: Int
+)
