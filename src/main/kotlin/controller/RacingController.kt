@@ -13,6 +13,7 @@ class RacingController {
     fun registerCars(carNameInput: String): List<Car> {
         val carNames = carNameInput.split(CAR_NAME_SEPARATOR)
             .map { it.trim() }
+        CarValidator.validateCarNames(carNames)
 
         return carNames.map { Car(it) }
     }
