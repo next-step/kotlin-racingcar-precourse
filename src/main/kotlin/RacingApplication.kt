@@ -47,6 +47,7 @@ private fun scanRounds(): Int {
 
 private fun racing(cars: List<Car>, rounds: Int) {
     val racingView = RacingView()
+    racingView.printRacingResultPrefix()
     for (round in 1..rounds) {
         racingCarController.racing(cars)
         racingView.printRacingDistance(cars)
