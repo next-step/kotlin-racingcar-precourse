@@ -8,9 +8,9 @@ val racingCarController = RacingController()
 fun main() {
     val cars = registerCars()
 
-    // 몇회 전진 입력 받음
     val rounds = scanRounds()
 
+    racing(cars, rounds)
     // controller 전진 호출
     // 차량 전진 출력
     // controller 우승자 계산 호출
@@ -42,5 +42,13 @@ private fun scanRounds(): Int {
         } catch (exception: NumberFormatException) {
             roundView.printErrorMessage(exception)
         }
+    }
+}
+
+private fun racing(cars: List<Car>, rounds: Int) {
+    val racingView = RacingView()
+    for (round in 1..rounds) {
+        racingCarController.racing(cars)
+        racingView.printRacingDistance(cars)
     }
 }

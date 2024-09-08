@@ -1,15 +1,17 @@
 package view
 
+import model.Car
+
 class RacingView : View {
     companion object {
-        const val ROUND_INPUT_TEXT = "시도할 회수는 몇회인가요?"
+        private const val MESSAGE_RACING_RESULT_PREFIX = "실행 결과"
     }
 
-    fun printRoundInputMessage() {
-        println(ROUND_INPUT_TEXT)
-    }
-
-    fun scanRound(): Int {
-        return readln().toInt()
+    fun printRacingDistance(cars: List<Car>) {
+        println(MESSAGE_RACING_RESULT_PREFIX)
+        cars.forEach { car ->
+            println("${car.name} : ${car.distance}")
+        }
+        println()
     }
 }
