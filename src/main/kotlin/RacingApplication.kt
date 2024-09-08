@@ -3,6 +3,7 @@ import model.Car
 import view.RacingView
 import view.RoundView
 import view.RegisterCarView
+import view.WinnerView
 
 val racingCarController = RacingController()
 fun main() {
@@ -11,10 +12,8 @@ fun main() {
     val rounds = scanRounds()
 
     racing(cars, rounds)
-    // controller 전진 호출
-    // 차량 전진 출력
-    // controller 우승자 계산 호출
-    // 우승자 출력
+
+    winner(cars)
 }
 
 private fun registerCars(): List<Car> {
@@ -52,4 +51,10 @@ private fun racing(cars: List<Car>, rounds: Int) {
         racingCarController.racing(cars)
         racingView.printRacingDistance(cars)
     }
+}
+
+private fun winner(cars: List<Car>) {
+    val winnerView = WinnerView()
+    val winners = racingCarController.calculateWinner(cars)
+    winnerView.printWinners(winners)
 }
