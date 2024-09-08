@@ -1,6 +1,7 @@
 package view
 
 import model.CarName
+import java.util.Objects
 
 class Input private constructor() {
 
@@ -24,12 +25,10 @@ class Input private constructor() {
 
         private fun <T> readInputWithRetry(action: () -> T): T {
             var data: T? = null
-            var done = false
 
-            while (!done) {
+            while (Objects.isNull(data)) {
                 try {
                     data = action()
-                    done = true
                 } catch (e: IllegalArgumentException) {
                     println("[ERROR] ${e.message}\n")
                 }
