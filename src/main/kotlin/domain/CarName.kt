@@ -1,11 +1,16 @@
 package domain
 
+
 class CarName(
     private val name: String = "empty"
 ) {
     init {
         check(name.isNotBlank()) { "자동차 이름은 빈값일 수 없습니다." }
-        check(name.length <= 5) { "자동차 이름은 5자 이하여야 합니다." }
+        check(name.length <= MAXIMUM_NAME_LENGTH) { "자동차 이름은 5자 이하여야 합니다." }
+    }
+
+    companion object {
+        private const val MAXIMUM_NAME_LENGTH: Int = 5
     }
 
     val nameForPrint: String get() = name
