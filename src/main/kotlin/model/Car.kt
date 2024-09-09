@@ -27,7 +27,7 @@ class Car(
     }
 
     private fun isMovableCondition(randomNumber: Int): Boolean {
-        return randomNumber in 0..4;
+        return randomNumber >= 4;
     }
 
     override fun equals(other: Any?): Boolean {
