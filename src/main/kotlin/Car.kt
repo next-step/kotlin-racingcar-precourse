@@ -1,13 +1,10 @@
 private const val INIT_POSITION: Int = 0
 
-class Car2 {
-    var position: Int = INIT_POSITION
-}
-
-data class Car(
+class Car(
     val name: String
 ) {
     var mileage: Int = INIT_POSITION
+        private set
 
     init {
         require(name.length <= MAX_NAME_LENGTH) {
