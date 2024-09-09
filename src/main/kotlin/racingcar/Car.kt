@@ -1,3 +1,5 @@
+package racingcar
+
 private const val INIT_POSITION: Int = 0
 
 class Car(

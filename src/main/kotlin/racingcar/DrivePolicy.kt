@@ -1,3 +1,5 @@
+package racingcar
+
 class DrivePolicy {
 
     fun getMoveForward(): Int {
