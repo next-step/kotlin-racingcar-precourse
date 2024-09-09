@@ -1,6 +1,5 @@
 import domain.Car
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -10,7 +9,7 @@ class CarTest {
 
     @Test
     fun car_exception() {
-        assertThatIllegalArgumentException()
+        assertThatIllegalStateException()
             .isThrownBy { Car(position = -1) }
             .withMessage("자동차 위치는 음수일 수 없습니다.")
     }

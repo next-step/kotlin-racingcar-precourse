@@ -1,10 +1,11 @@
 package domain
 
-import java.util.Random
+import java.util.*
 
 class Car(
     private val carName: CarName = CarName(),
-    private var position: Int = 0
+    private var position: Int = 0,
+    private val id: Int = UUID.randomUUID().hashCode(),
 ) {
     companion object {
         const val MAX_RANDOM_BOUND = 10
@@ -13,11 +14,10 @@ class Car(
     }
 
     init {
-        when{
-            position < 0 -> throw IllegalArgumentException("자동차 위치는 음수일 수 없습니다.")
-        }
+        check(position >= 0) { "자동차 위치는 음수일 수 없습니다." }
     }
 
+    constructor(carName: String, position: Int, id: Int) : this(CarName(carName), position, id)
     constructor(carName: String, position: Int) : this(CarName(carName), position)
     constructor(carName: String) : this(CarName(carName))
 
@@ -32,14 +32,14 @@ class Car(
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is Car) return false
+        if (javaClass != other?.javaClass) return false
 
-        if (carName != other.carName) return false
+        other as Car
 
-        return true
+        return id == other.id
     }
 
     override fun hashCode(): Int {
-        return carName.hashCode()
+        return id
     }
 }

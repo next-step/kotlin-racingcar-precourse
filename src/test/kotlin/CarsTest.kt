@@ -41,7 +41,7 @@ class CarsTest {
     @DisplayName("모든 자동차를 랜덤값에 따라 이동시킨다.")
     fun move(fixNum: Int, position: Int) {
         val moveCar = Car(carName = "MOVE", position = 0)
-        val notMoveCar = Car(carName = "NOT_MOVE", position = 0)
+        val notMoveCar = Car(carName = "NMOVE", position = 0)
         val cars = Cars(listOf(moveCar, notMoveCar))
 
         cars.move(FixRandom(fixNum))
@@ -56,8 +56,8 @@ class CarsTest {
             listOf(
                 Car(position = 1),
                 Car(position = 5),
-                Car(position = 6, carName = "WINNER1"),
-                Car(position = 6, carName = "WINNER2"),
+                Car(position = 6, carName = "WIN1", id = 1),
+                Car(position = 6, carName = "WIN2", id = 2),
                 Car(position = 4),
                 Car(position = 3)
             )
@@ -67,6 +67,6 @@ class CarsTest {
 
         assertThat(actual.unmodifiableList)
             .hasSize(2)
-            .contains(Car(carName = "WINNER1"), Car(carName = "WINNER2"))
+            .contains(Car(id = 1), Car(id = 2))
     }
 }
