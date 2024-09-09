@@ -2,7 +2,7 @@ import domain.Car
 import domain.Cars
 import view.InputView
 import view.OutputView
-import java.util.*
+import kotlin.random.Random
 
 fun main() {
     val inputView = InputView()
@@ -17,7 +17,7 @@ fun main() {
 
     val inputNumberOfAttempts = inputView.inputNumberOfAttempts()
     repeat(inputNumberOfAttempts) {
-        cars.move(Random())
+        cars.move(Random.Default)
         outputView.printCurrent(cars)
     }
 

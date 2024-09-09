@@ -6,7 +6,7 @@ class OutputView {
     fun printCurrent(cars: Cars) {
         cars.unmodifiableList.forEach {
             val name = it.nameForPrint
-            val position = it.wherePosition
+            val position = it.position
             val display = "-".repeat(position)
             println("$name : $display")
         }

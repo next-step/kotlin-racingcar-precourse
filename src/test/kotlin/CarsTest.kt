@@ -1,7 +1,7 @@
 import domain.Car
 import domain.Cars
 import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatIllegalArgumentException
+import org.assertj.core.api.Assertions.assertThatIllegalStateException
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -14,7 +14,7 @@ class CarsTest {
     @Test
     @DisplayName("자동차 묶음은 빈값일 수 없다.")
     fun empty_exception() {
-        assertThatIllegalArgumentException()
+        assertThatIllegalStateException()
             .isThrownBy { Cars(listOf()) }
             .withMessage("자동차 묶음은 빈값일 수 없다.")
     }
@@ -46,7 +46,7 @@ class CarsTest {
 
         cars.move(FixRandom(fixNum))
 
-        assertThat(cars.unmodifiableList.filter { it.wherePosition == position }.toList())
+        assertThat(cars.unmodifiableList.filter { it.position == position }.toList())
             .hasSize(2)
     }
 

@@ -20,7 +20,7 @@ class CarTest {
     fun accelerate1(value: Int) {
         val car = Car()
         car.accelerate(FixRandom(value))
-        assertThat(car.wherePosition).isEqualTo(1)
+        assertThat(car.position).isEqualTo(1)
     }
 
     @ParameterizedTest
@@ -29,6 +29,6 @@ class CarTest {
     fun accelerate2(value: Int) {
         val car = Car()
         car.accelerate(FixRandom(value))
-        assertThat(car.wherePosition).isEqualTo(0)
+        assertThat(car.position).isEqualTo(0)
     }
 }

@@ -1,14 +1,12 @@
 package domain
 
-import java.util.*
+import kotlin.random.Random
 
 class Cars(
     private val cars: List<Car>
 ) {
     init {
-        when {
-            cars.isEmpty() -> throw IllegalArgumentException("자동차 묶음은 빈값일 수 없다.")
-        }
+        check(cars.isNotEmpty()) { "자동차 묶음은 빈값일 수 없다." }
     }
 
     val unmodifiableList: List<Car> = cars.toList()
@@ -18,9 +16,9 @@ class Cars(
     }
 
     fun winners(): Cars {
-        val maxPosition = cars.maxOf { it.wherePosition }
+        val maxPosition = cars.maxOf { it.position }
         return Cars(
-            cars.filter { it.wherePosition == maxPosition }
+            cars.filter { it.position == maxPosition }
                 .toList()
         )
     }

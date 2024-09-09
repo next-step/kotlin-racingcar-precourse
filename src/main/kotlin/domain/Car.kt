@@ -1,17 +1,17 @@
 package domain
 
-import java.util.*
+import java.util.UUID
+import kotlin.random.Random
 
 class Car(
     private val carName: CarName = CarName(),
-    private var position: Int = 0,
-    private val id: Int = UUID.randomUUID().hashCode(),
+    position: Int = 0,
+    id: Int = UUID.randomUUID().hashCode(),
 ) {
-    companion object {
-        const val MAX_RANDOM_BOUND = 10
-        const val THRESHOLD_TO_MOVE = 4
-        const val MOVE_DISTANCE = 1
-    }
+    var position: Int = position
+        private set
+    var id: Int = id
+        private set
 
     init {
         check(position >= 0) { "자동차 위치는 음수일 수 없습니다." }
@@ -21,7 +21,6 @@ class Car(
     constructor(carName: String, position: Int) : this(CarName(carName), position)
     constructor(carName: String) : this(CarName(carName))
 
-    val wherePosition: Int get() = position
     val nameForPrint: String get() = carName.nameForPrint
 
     fun accelerate(random: Random) {
@@ -41,5 +40,11 @@ class Car(
 
     override fun hashCode(): Int {
         return id
+    }
+
+    companion object {
+        const val MAX_RANDOM_BOUND = 10
+        const val THRESHOLD_TO_MOVE = 4
+        const val MOVE_DISTANCE = 1
     }
 }
