@@ -1,4 +1,4 @@
-package lotto
+package day1.lotto
 
 @JvmInline
 value class LottoNumber2(

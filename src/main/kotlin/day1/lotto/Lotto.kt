@@ -1,4 +1,4 @@
-package lotto
+package day1.lotto
 
 class Lotto(
     val numbers: Set<LottoNumber>

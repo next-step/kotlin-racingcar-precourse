@@ -1,6 +1,6 @@
 @file:JvmName("MathUtils")
 
-package racingcar
+package day1.racingcar
 
 fun calculate(text: String?): Int {
     requireNotNull(text)

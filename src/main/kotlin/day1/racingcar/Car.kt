@@ -1,4 +1,4 @@
-package racingcar
+package day1.racingcar
 
 private const val INIT_POSITION: Int = 0
 

@@ -1,4 +1,4 @@
-package sample
+package day1.sample
 
 class Point(
     private val x: Int,

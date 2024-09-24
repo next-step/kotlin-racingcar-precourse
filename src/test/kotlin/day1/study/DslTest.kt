@@ -1,4 +1,4 @@
-package study
+package day1.study
 
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
@@ -55,6 +55,25 @@ class DslTest {
         actual.skills shouldContain SoftSkill("A passion for problem solving")
     }
 
+    @Test
+    fun languages() {
+        val actual: Person = introduce {
+            name("강진경")
+            company("현대자동차그룹")
+            skills {
+                soft("A passion for problem solving")
+                soft("Good communication skills")
+                hard("Kotlin")
+            }
+            languages {
+                "Korean" level 5
+                "English" level 3
+            }
+        }
+
+        actual.languages shouldContain Pair("Korean", 5)
+    }
+
     private fun introduce(block: PersonBuilder.() -> Unit): Person {
         return PersonBuilder().apply(block).build()
     }
@@ -63,7 +82,8 @@ class DslTest {
 class PersonBuilder(
     private var name: String = "",
     private var company: String? = null,
-    private var skills: List<Skill> = listOf()
+    private var skills: List<Skill> = listOf(),
+    private var languages: List<Pair<String, Int>> = listOf()
 ) {
     fun name(name: String) {
         this.name = name
@@ -77,8 +97,12 @@ class PersonBuilder(
         skills = SkillsBuilder().apply(block).build()
     }
 
+    fun languages(block: LanguagesBuilder.() -> Unit) {
+        languages = LanguagesBuilder().apply(block).build()
+    }
+
     fun build(): Person {
-        return Person(name, company, skills)
+        return Person(name, company, skills, languages)
     }
 }
 
@@ -98,10 +122,22 @@ class SkillsBuilder(
     }
 }
 
+class LanguagesBuilder(
+    private var languages: MutableList<Pair<String, Int>> = mutableListOf()
+) {
+
+    infix fun String.level(level: Int) = Pair(this, level)
+
+    fun build(): List<Pair<String, Int>> {
+        return languages.toList()
+    }
+}
+
 class Person(
     val name: String,
     val company: String?,
-    val skills: List<Skill>
+    val skills: List<Skill>,
+    val languages: List<Pair<String, Int>>
 )
 
 interface Skill

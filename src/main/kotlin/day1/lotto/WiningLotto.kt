@@ -1,4 +1,4 @@
-package lotto
+package day1.lotto
 
 class WiningLotto(
     private val lotto: Lotto,

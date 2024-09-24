@@ -1,4 +1,4 @@
-package racingcar
+package day1.racingcar
 
 class DrivePolicy {
 

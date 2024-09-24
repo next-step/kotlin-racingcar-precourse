@@ -1,4 +1,4 @@
-package racingcar
+package day1.racingcar
 
 import io.kotest.matchers.shouldBe
 import org.assertj.core.api.Assertions.assertThat
